@@ -8,7 +8,7 @@ use std::path::PathBuf;
 /// Wrapper around `git2::Repository` providing high‑level helpers.
 pub struct Repository {
     inner: Git2Repo,
-    path: PathBuf,  // HINZUFÜGEN: Für Clone
+    path: PathBuf,
 }
 
 impl Repository {
@@ -134,7 +134,6 @@ impl Repository {
     }
 }
 
-// Manuelles Clone implementieren
 impl Clone for Repository {
     fn clone(&self) -> Self {
         Self::open(&self.path).expect("Failed to clone repository")

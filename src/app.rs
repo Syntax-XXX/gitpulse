@@ -71,7 +71,6 @@ pub struct App {
     current_view: View,
     repo_view: RepoView,
     worktrees_view: WorktreesView,
-    // TODO: Add other views here as they are implemented
 }
 
 impl App {
@@ -201,20 +200,12 @@ impl App {
                 self.repo_view.handle_key(key, &self.repo, &self.config)?;
             }
             View::Branches => {
-                // TODO: Implement branches view key handling
-                tracing::warn!("Branches view not yet implemented");
             }
             View::Commits => {
-                // TODO: Implement commits view key handling
-                tracing::warn!("Commits view not yet implemented");
             }
             View::Stashes => {
-                // TODO: Implement stashes view key handling
-                tracing::warn!("Stashes view not yet implemented");
             }
             View::Remotes => {
-                // TODO: Implement remotes view key handling
-                tracing::warn!("Remotes view not yet implemented");
             }
             View::Worktrees => {
                 self.worktrees_view.handle_key(key, &self.repo, &self.config)?;
@@ -230,9 +221,7 @@ impl App {
         let repo_view = &self.repo_view;
         let worktrees_view = &self.worktrees_view;
         self.terminal.draw(move |f| {
-            if let Err(e) = Self::draw_ui_static(f, current_view, repo, repo_view, worktrees_view) {
-                eprintln!("Draw error: {}", e);
-            }
+            let _ = Self::draw_ui_static(f, current_view, repo, repo_view, worktrees_view);
         })?;
         Ok(())
     }
@@ -244,19 +233,15 @@ impl App {
                 repo_view.draw(f, repo)?;
             }
             View::Branches => {
-                // TODO: Implement branches view drawing
                 Self::draw_placeholder_view_static(f, "Branches", current_view);
             }
             View::Commits => {
-                // TODO: Implement commits view drawing
                 Self::draw_placeholder_view_static(f, "Commits", current_view);
             }
             View::Stashes => {
-                // TODO: Implement stashes view drawing
                 Self::draw_placeholder_view_static(f, "Stashes", current_view);
             }
             View::Remotes => {
-                // TODO: Implement remotes view drawing
                 Self::draw_placeholder_view_static(f, "Remotes", current_view);
             }
             View::Worktrees => {
