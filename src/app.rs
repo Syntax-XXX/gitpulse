@@ -288,7 +288,7 @@ impl App {
             .collect::<Vec<_>>();
 
         let tabs = Tabs::new(titles)
-            .block(Block::default().borders(Borders::ALL).title("gitz"))
+            .block(Block::default().borders(Borders::ALL).title("gitpulse"))
             .select(View::all().iter().position(|&v| v == current_view).unwrap_or(0))
             .style(Style::default().fg(Color::Cyan))
             .highlight_style(Style::default().fg(Color::Yellow).add_modifier(Modifier::BOLD));

@@ -1,11 +1,11 @@
 [package]
-name = "git-z"
+name = "gitpulse"
 version = "2.0.0"
 edition = "2021"
 authors = ["Syntax-XXX <me@syntax-xxx.is-a.dev>"]
 license = "MIT"
-description = "⚡ A blazingly fast terminal UI for Git v2"
-repository = "https://github.com/Syntax-XXX/gitz"
+description = "⚡ A blazingly fast terminal UI for GitPulse"
+repository = "https://github.com/Syntax-XXX/gitpulse"
 keywords = ["git", "tui", "cli", "version-control", "terminal"]
 categories = ["command-line-utilities", "development-tools"]
 readme = "README.md"

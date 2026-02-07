@@ -1,6 +1,6 @@
-# git-z
+# gitpulse
 
-A blazingly fast terminal UI for Git, written in Rust. `git-z` aims to provide a smooth, interactive experience for managing Git repositories directly from the terminal.
+A blazingly fast terminal UI for Git, written in Rust. `gitpulse` aims to provide a smooth, interactive experience for managing Git repositories directly from the terminal.
 
 ## Features
 
@@ -15,11 +15,11 @@ A blazingly fast terminal UI for Git, written in Rust. `git-z` aims to provide a
 
 ```bash
 
-cargo install git-z
+cargo install gitpulse
 
 # Or clone the repository and build from source
-git clone https://github.com/Syntax-XXX/gitz.git
-cd gitz
+git clone https://github.com/Syntax-XXX/gitpulse.git
+cd gitpulse
 cargo build --release
 ```
 
@@ -27,22 +27,22 @@ cargo build --release
 
 ```bash
 # Show help
-gitz --help
+gitpulse --help
 
 # Initialize a new repository
-gitz init
+gitpulse init
 
 # Add files and commit
-gitz add .
-gitz commit -m "Initial commit"
+gitpulse add .
+gitpulse commit -m "Initial commit"
 
 # Push changes
-gitz push
+gitpulse push
 ```
 
 ## Configuration
 
-`git-z` uses a configuration file (default: `~/.config/gitz/config.toml`). Example configuration:
+`gitpulse` uses a configuration file (default: `~/.config/gitpulse/config.toml`). Example configuration:
 
 ```toml
 [log]
@@ -56,8 +56,8 @@ theme = "dark"
 
 ```bash
 # Clone the repo
-git clone https://github.com/Syntax-XXX/gitz.git
-cd gitz
+git clone https://github.com/Syntax-XXX/gitpulse.git
+cd gitpulse
 
 # Install dependencies
 cargo build
@@ -72,4 +72,4 @@ Contributions are welcome! Please open an issue or submit a pull request.
 
 ## License
 
-`gitz` is licensed under the MIT License. See `LICENSE` for more details.
+`gitpulse` is licensed under the MIT License. See `LICENSE` for more details.
