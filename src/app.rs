@@ -6,6 +6,7 @@ use crate::errors::GitzError;
 use crate::git::Repository;
 use crate::ui::views::repo_view::RepoView;
 use crate::ui::views::worktrees_view::WorktreesView;
+use crate::ui::views::workflow_view::WorkflowView;
 use crate::event::AppEvent;
 use ratatui::backend::CrosstermBackend;
 use ratatui::Terminal;
@@ -26,6 +27,7 @@ pub enum View {
     Stashes,
     Remotes,
     Worktrees,
+    Workflows,
 }
 
 impl View {
@@ -38,6 +40,7 @@ impl View {
             View::Stashes => "Stashes",
             View::Remotes => "Remotes",
             View::Worktrees => "Worktrees",
+            View::Workflows => "Workflows",
         }
     }
 
@@ -94,6 +97,7 @@ impl App {
         // Initialise UI views.
         let repo_view = RepoView::new();
         let worktrees_view = WorktreesView::new();
+        let workflow_view = WorkflowView::new();
 
         Ok(Self {
             repo,
@@ -104,6 +108,7 @@ impl App {
             current_view: View::Files,
             repo_view,
             worktrees_view,
+            workflow_view,
         })
     }
 
@@ -189,6 +194,10 @@ impl App {
                 self.current_view = View::Worktrees;
                 Ok(true)
             }
+            KeyCode::Char('7') => {
+                self.current_view = View::Workflows;
+                Ok(true)
+            }
             _ => Ok(false),
         }
     }
@@ -210,6 +219,9 @@ impl App {
             View::Worktrees => {
                 self.worktrees_view.handle_key(key, &self.repo, &self.config)?;
             }
+            View::Workflows => {
+                self.workflow_view.handle_key(key, &self.repo, &self.config)?;
+            }
         }
         Ok(())
     }
@@ -220,8 +232,9 @@ impl App {
         let repo = &self.repo;
         let repo_view = &self.repo_view;
         let worktrees_view = &self.worktrees_view;
+        let workflow_view = &mut self.workflow_view;
         self.terminal.draw(move |f| {
-            let _ = Self::draw_ui_static(f, current_view, repo, repo_view, worktrees_view);
+            let _ = Self::draw_ui_static(f, current_view, repo, repo_view, worktrees_view, workflow_view);
         })?;
         Ok(())
     }
@@ -246,6 +259,9 @@ impl App {
             }
             View::Worktrees => {
                 worktrees_view.draw(f, repo)?;
+            }
+            View::Workflows => {
+                workflow_view.draw(f, repo)?;
             }
         }
         Ok(())
