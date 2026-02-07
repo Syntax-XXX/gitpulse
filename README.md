@@ -15,6 +15,8 @@ A blazingly fast terminal UI for Git, written in Rust. `gitz` aims to provide a 
 
 ```bash
 
+cargo install git-z
+
 # Or clone the repository and build from source
 git clone https://github.com/Syntax-XXX/gitz.git
 cd gitz
